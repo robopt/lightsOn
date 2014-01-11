@@ -1,6 +1,15 @@
 #!/bin/bash
 # lightsOn.sh
 
+#Modified 2014
+# robopt 
+# url: https://github.com/robopt/lightsOn
+
+# changelog
+# (robopt): added dimming
+# (robopt): added display ignore list
+
+#ORIGINAL
 # Copyright (c) 2013 iye.cba at gmail com
 # url: https://github.com/iye/lightsOn
 # This script is licensed under GNU GPL version 2.0 or above
@@ -54,8 +63,8 @@ do
     displays="$displays $id"
 done < <(xvinfo | sed -n 's/^screen #\([0-9]\+\)$/\1/p')
 
-#temp='xrandr --query | grep "\(DFP[0-9]\{1,\}\) connected" | grep -o "\(DFP[0-9]\{1,\}\)"  | sed "s/$ignore_string//g"'
-#echo $temp
+
+#iterate display names, apply ignore list
 displayNames=""
 while read id
 do
@@ -237,6 +246,7 @@ delayScreensaver()
 
 }
 
+#check if theres a fullscreen app and mplayer
 checkBrightness()
 {
 	mplayer_detected=0
@@ -334,6 +344,7 @@ while true ; do
         ;;
     esac 
 done;
+
 #echo arguments
 echo "delay = $delay"
 echo "dim brightness = $dim_brightness"
