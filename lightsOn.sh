@@ -8,6 +8,12 @@
 # changelog
 # (robopt): added dimming
 # (robopt): added display ignore list
+# (robopt): added arguments (-t, -db, -dc, -ob, -oc)
+# (robopt): added syslog logging
+
+#todo
+# (robopt): detect which window is fullscreen (currently any window fullscreen + a running whitelist process)
+# (robopt): fix arguments since they dont actually work 
 
 #ORIGINAL
 # Copyright (c) 2013 iye.cba at gmail com
@@ -318,8 +324,8 @@ fi
 TEMP=`getopt --long -o "t:db:dc:ob:oc:" "$@"`
 eval set -- "$TEMP"
 while true ; do
-    case "$1" in
-        -t )
+    case "$1" in 
+	-t )
             delay=$2
             shift 2
         ;;
